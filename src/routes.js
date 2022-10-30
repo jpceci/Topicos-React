@@ -4,7 +4,7 @@ import Cerrar from "./layouts/authentication/sign-in";
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import Contact from "./layouts/Contact";
-
+import VerMasContactados from "./layouts/VerMasContactados";
 
 const routes = [
   {
@@ -20,6 +20,13 @@ const routes = [
     key: "tables",
     route: "/contact",
     component: <Contact />,
+  },
+  {
+    type: "collapse",
+    name: "ver mas de contactados",
+    key: "tables",
+    route: "/contactedDetails",
+    component: <VerMasContactados />,
   },
   {
     name: "Cerrar",
