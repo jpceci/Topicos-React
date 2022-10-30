@@ -7,8 +7,27 @@ import MDAvatar from "../../../../components/MDAvatar";
 import MDButton from "../../../../components/MDButton";
 import Grid from "@mui/material/Grid";
 import PhoneIcon from "@mui/icons-material/Call";
+import { useEffect, useState } from "react";
+
 
 function CardClients({ data }) {
+
+  // const [backendData, setBackendData] = useState([{}]);
+  
+  //   useEffect(() => {
+  //     fetch("https://calm-wildwood-29871.herokuapp.com/getusertimesvisited" + data._id).then(
+  //       response => response.json()
+  //     ).then(
+  //       data => {
+  //         setBackendData(data);
+  //         console.log(data);
+  //       }
+  //     )
+  //   }, [])
+  
+
+  
+
   return (
     <Card style={{ height: 200 }}>
       <MDBox pt={3} px={3}>
@@ -36,7 +55,7 @@ function CardClients({ data }) {
           </Grid>
         </Grid>
         <MDBox mt={2} mb={2}>
-          {data.status === 1 && (
+          {data.state === 1 && (
             <>
               <Grid item xs container direction="row" justifyContent="space-between">
                 <MDTypography variant="caption" color="#fff" fontWeight="regular" >
@@ -77,7 +96,7 @@ function CardClients({ data }) {
             </>
           )}
 
-          {data.status === 2 && (
+          {data.state === 2 && (
             <>
               <Grid item xs container direction="row" justifyContent="space-between">
                 <MDTypography variant="caption" color="#fff" fontWeight="regular">
@@ -107,7 +126,7 @@ function CardClients({ data }) {
             </>
           )}
 
-          {data.status === 3 && (
+          {data.state === 3 && (
             <>
               <Grid item xs container direction="row" justifyContent="space-between">
                 <MDTypography variant="caption" color="#fff" fontWeight="regular">
@@ -137,7 +156,7 @@ function CardClients({ data }) {
             </>
           )}
 
-          {data.status === 4 && (
+          {data.state === 4 && (
             <>
               <Grid item xs container direction="row" justifyContent="space-between">
                 <MDTypography variant="caption" color="#fff" fontWeight="regular">
