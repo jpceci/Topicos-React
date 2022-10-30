@@ -64,11 +64,13 @@ function CardClients({ data }) {
                 </MDTypography>
               </Grid>
               <MDButton
+                href="http://localhost:3000/contact"
                 style={{ position: "absolute", bottom: 15, maxWidth: "80%" }}
                 variant="gradient"
                 color="info"
                 fullWidth
                 size="small"
+
               >
                 Contactar
               </MDButton>
