@@ -1,7 +1,7 @@
-import Table from 'react-bootstrap/Table';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Table from "react-bootstrap/Table";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function BasicExample() {
+function BasicExample({ tuplas }) {
   return (
     <Table striped bordered hover>
       <thead>
@@ -12,26 +12,15 @@ function BasicExample() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>18-10-2022</td>
-          <td>Adore You (Polera)</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>18-10-2022</td>
-          <td>Adore You (Polera)</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>18-10-2022</td>
-          <td>Adore You (Polera)</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>18-10-2022</td>
-          <td>Adore You (Polera)</td>
-          <td>2</td>
-        </tr>
+        {tuplas.map((tupla, index) => {
+          return (
+            <tr>
+              <td>{tupla.fecha}</td>
+              <td>{tupla.producto}</td>
+              <td>{tupla.cantidad}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </Table>
   );

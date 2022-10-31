@@ -5,12 +5,34 @@ import MDBox from "../../components/MDBox";
 import Grid from "@mui/material/Grid";
 import MDAvatar from "../../components/MDAvatar";
 import MDTypography from "../../components/MDTypography";
-import BasicExample from "./components/Table"
+import BasicExample from "./components/Table";
 function VerMasClientesActivos() {
+  let ordenes = [
+    {
+      fecha: "18-10-2022",
+      producto: "Adore You (Polera)",
+      cantidad: 2,
+    },
+    {
+      fecha: "18-10-2022",
+      producto: "Adore You (Polera)",
+      cantidad: 2,
+    },
+    {
+      fecha: "18-10-2022",
+      producto: "Adore You (Polera)",
+      cantidad: 2,
+    },
+    {
+      fecha: "18-10-2022",
+      producto: "Adore You (Polera)",
+      cantidad: 2,
+    },
+  ];
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <Card >
+      <Card>
         <MDBox pt={4} px={4}>
           <Grid container spacing={2}>
             <Grid xs={2}>
@@ -31,10 +53,9 @@ function VerMasClientesActivos() {
         </MDBox>{" "}
         <hr />
         <MDBox pt={4} px={4}>
-             <BasicExample/>
+          <BasicExample tuplas={ordenes}/>
         </MDBox>
       </Card>
-     
     </DashboardLayout>
   );
 }
