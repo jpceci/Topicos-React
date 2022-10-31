@@ -7,41 +7,24 @@ import MDAvatar from "../../../../components/MDAvatar";
 import MDButton from "../../../../components/MDButton";
 import Grid from "@mui/material/Grid";
 import PhoneIcon from "@mui/icons-material/Call";
-import { useEffect, useState } from "react";
 
 
 function CardClients({ data }) {
-
-  // const [backendData, setBackendData] = useState([{}]);
-  
-  //   useEffect(() => {
-  //     fetch("https://calm-wildwood-29871.herokuapp.com/getusertimesvisited" + data._id).then(
-  //       response => response.json()
-  //     ).then(
-  //       data => {
-  //         setBackendData(data);
-  //         console.log(data);
-  //       }
-  //     )
-  //   }, [])
-  
-
-  
 
   return (
     <Card style={{ height: 200 }}>
       <MDBox pt={3} px={3}>
         <Grid container spacing={1}>
-          <Grid xs>
+          <Grid item xs>
             <MDAvatar src={data.profilePicture} alt="Avatar" variant="circular" size="lg" />
           </Grid>
 
-          <Grid xs={8} container direction="column" spacing={1}>
+          <Grid item xs={8} container direction="column" spacing={1}>
             <MDTypography variant="h6" fontWeight="medium">
               {data.firstName} {data.lastName}
             </MDTypography>
             <Grid item xs container direction="row" justifyContent="space-between">
-              <PhoneIcon/>
+              <PhoneIcon />
               <MDTypography variant="button" fontWeight="regular">
                 {data.phoneNumber}
               </MDTypography>
@@ -62,7 +45,7 @@ function CardClients({ data }) {
                   Nro. de veces que ingresó:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  10
+                  {data.timesVisited}
                 </MDTypography>
               </Grid>
               <Grid item xs container direction="row" justifyContent="space-between">
@@ -70,7 +53,7 @@ function CardClients({ data }) {
                   Último ingreso:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  18/10/2022
+                  {(data.lastUserVisit).slice(0,10)}
                 </MDTypography>
               </Grid>
 
@@ -100,18 +83,18 @@ function CardClients({ data }) {
             <>
               <Grid item xs container direction="row" justifyContent="space-between">
                 <MDTypography variant="caption" color="#fff" fontWeight="regular">
-                  Fecha Contactado: 
+                  Fecha Contactado:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                   18/10/2022
+                  {(data.lastUserContact).slice(0,10)}
                 </MDTypography>
               </Grid>
               <Grid item xs container direction="row" justifyContent="space-between">
                 <MDTypography variant="caption" color="#fff" fontWeight="regular">
-                  Nro. de veces contactado: 
+                  Nro. de veces contactado:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  2
+                  {data.timesContacted}
                 </MDTypography>
               </Grid>
               <MDButton
@@ -130,10 +113,10 @@ function CardClients({ data }) {
             <>
               <Grid item xs container direction="row" justifyContent="space-between">
                 <MDTypography variant="caption" color="#fff" fontWeight="regular">
-                  Fecha Último Pedido: 
+                  Fecha Último Pedido:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  18/10/2022
+                  {(data.lastUserOrder).slice(0,10)}
                 </MDTypography>
               </Grid>
               <Grid item xs container direction="row" justifyContent="space-between">
@@ -141,7 +124,7 @@ function CardClients({ data }) {
                   Productos Pedidos:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  7
+                  {data.timesOrdered}
                 </MDTypography>
               </Grid>
               <MDButton
@@ -163,15 +146,15 @@ function CardClients({ data }) {
                   Fecha Último Pedido:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                 22/10/2022
+                  {(data.lastOrder).slice(0,10)}
                 </MDTypography>
               </Grid>
               <Grid item xs container direction="row" justifyContent="space-between">
                 <MDTypography variant="caption" color="#fff" fontWeight="regular">
-                  Frecuencia de Pedidos: 
+                  Frecuencia de Pedidos:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  10 dias
+                  {(data.frequencyOrder/1000/60/60/24).toFixed(0)} días
                 </MDTypography>
               </Grid>
               <Grid item xs container direction="row" justifyContent="space-between">
@@ -179,7 +162,7 @@ function CardClients({ data }) {
                   Promedio de Compras:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  100bs
+                  {(data.avgTotalPrice.$numberDecimal*1).toFixed(2)}bs
                 </MDTypography>
               </Grid>
               <MDButton
