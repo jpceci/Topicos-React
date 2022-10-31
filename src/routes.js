@@ -8,6 +8,7 @@ import VerMasContactados from "./layouts/VerMasContactados";
 import VerMasClientesActivos from "./layouts/VerMasClientesActivos";
 import BasicTable from "./layouts/VerMasClientesActivos/components/Table";
 import VerMasHabituales from "./layouts/VerMasHabituales";
+import CrearPromocion from "./layouts/CrearPromocion";
 const routes = [
   {
     type: "collapse",
@@ -43,6 +44,13 @@ const routes = [
     key: "tables",
     route: "/usualClientDetail",
     component: <VerMasHabituales/>
+  },
+  {
+    type: "collapse",
+    name: "Crear promocion",
+    key: "tables",
+    route: "/createPromotion",
+    component: <CrearPromocion/>
   },
   {
     name: "Cerrar",
