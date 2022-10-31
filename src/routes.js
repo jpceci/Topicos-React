@@ -7,6 +7,7 @@ import Contact from "./layouts/Contact";
 import VerMasContactados from "./layouts/VerMasContactados";
 import VerMasClientesActivos from "./layouts/VerMasClientesActivos";
 import BasicTable from "./layouts/VerMasClientesActivos/components/Table";
+import VerMasHabituales from "./layouts/VerMasHabituales";
 const routes = [
   {
     type: "collapse",
@@ -35,6 +36,13 @@ const routes = [
     key: "tables",
     route: "/activeClientDetail",
     component: <VerMasClientesActivos />,
+  },
+  {
+    type: "collapse",
+    name: "ver mas de Clientes Habituales",
+    key: "tables",
+    route: "/usualClientDetail",
+    component: <VerMasHabituales/>
   },
   {
     name: "Cerrar",
