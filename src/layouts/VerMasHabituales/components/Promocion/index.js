@@ -11,7 +11,7 @@ function Promocion({ data, userData }) {
     <Card style={{ height: 500, width: 700 }}>
       <MDBox pt={4} px={4}>
         <Grid container spacing={2}>
-          <Grid xs={2}>
+          <Grid item xs={2}>
             <MDAvatar
               src={userData.profilePicture}
               alt="Avatar"
@@ -20,7 +20,7 @@ function Promocion({ data, userData }) {
             />
           </Grid>
 
-          <Grid xs={8} spacing={1} container direction="column">
+          <Grid item xs={8} spacing={1} container direction="column">
             <MDTypography variant="h6" fontWeight="medium">
               {userData.firstName + " " + userData.lastName}
             </MDTypography>
@@ -31,6 +31,7 @@ function Promocion({ data, userData }) {
             )}
           </Grid>
           <Grid
+            item
             xs={2}
             spacing={1}
             container
@@ -46,9 +47,9 @@ function Promocion({ data, userData }) {
       </MDBox>
       <MDBox pt={3} px={3}>
         <Grid item xs container direction="column">
-            <MDTypography variant="caption" color="#fff" fontWeight="medium">
-              {data.text + "\n"}
-            </MDTypography>
+          <MDTypography variant="caption" color="dark" fontWeight="medium">
+            {data.text + "\n"}
+          </MDTypography>
           <Grid item xs>
             <img src={data.picture} width="250"></img>
           </Grid>

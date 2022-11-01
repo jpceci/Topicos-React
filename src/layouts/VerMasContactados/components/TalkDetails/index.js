@@ -10,7 +10,7 @@ function TalkDetails({ data, userData }) {
     <Card style={{ height: 300, width: 700 }}>
       <MDBox pt={4} px={4}>
         <Grid container spacing={2}>
-          <Grid xs={2}>
+          <Grid item xs={2}>
             <MDAvatar
               src={userData.profilePicture}
               alt="Avatar"
@@ -19,7 +19,7 @@ function TalkDetails({ data, userData }) {
             />
           </Grid>
 
-          <Grid xs={8} spacing={1} container direction="column">
+          <Grid item xs={8} spacing={1} container direction="column">
             <MDTypography variant="h6" fontWeight="medium">
               {userData.firstName + " " + userData.lastName}
             </MDTypography>
@@ -35,6 +35,7 @@ function TalkDetails({ data, userData }) {
             )}
           </Grid>
           <Grid
+            item
             xs={2}
             spacing={1}
             container

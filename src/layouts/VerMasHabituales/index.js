@@ -7,26 +7,6 @@ import Promocion from "./components/Promocion";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
 
-// let detallesDePromociones = [
-//   {
-//     profilePicture:
-//       "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/143335283/original/2274a39adc5a8492e073b610dbcdeb1a2f900105/draw-anime-profile-picture-for-you-bd1d.jpg",
-//     firstName: "Graciela ",
-//     lastName: "Guzman",
-//     date: "31-10-2022",
-//     content: "Graciela, ¡Tenemos una sorpresa para ti! este mes contamos con la promocion de 50% de descuento en productos de harry Styles",
-//     promotionPicture: "https://raw.githubusercontent.com/marceyuli/fotosTP/main/promHarry.png"
-//   },
-//   {
-//     profilePicture:
-//       "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/143335283/original/2274a39adc5a8492e073b610dbcdeb1a2f900105/draw-anime-profile-picture-for-you-bd1d.jpg",
-//     firstName: "Graciela ",
-//     lastName: "Guzman",
-//     date: "31-10-2022",
-//     content: "Graciela, ¡Tenemos una sorpresa para ti! este mes contamos con la promocion de 50% de descuento en productos de harry Styles",
-//     promotionPicture: "https://raw.githubusercontent.com/marceyuli/fotosTP/main/promHarry.png"
-//   },
-// ];
 function VerMasHabituales() {
   const location = useLocation()
 
@@ -46,6 +26,7 @@ function VerMasHabituales() {
         }
       )
   }, [])
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -54,7 +35,7 @@ function VerMasHabituales() {
       </MDBox>{" "}
       <MDBox py={3}>
         <Grid item xs={3}>
-          {habitualClients.map((item, index) => {
+          {habitualClients[0]._id && habitualClients.map((item, index) => {
             return (
               <div
               >
