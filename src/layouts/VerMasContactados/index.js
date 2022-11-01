@@ -9,27 +9,7 @@ import { useEffect, useState } from "react";
 
 function VerMasContactados() {
   const location = useLocation()
-  console.log(location.state);
-  let detallesDeCharlas = [
-    {
-      profilePicture:
-        "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/143335283/original/2274a39adc5a8492e073b610dbcdeb1a2f900105/draw-anime-profile-picture-for-you-bd1d.jpg",
-      firstName: "Graciela ",
-      lastName: "Guzman",
-      date: "31-10-2022",
-      medium: "facebook",
-      content: "Este es el contenido",
-    },
-    {
-      profilePicture:
-        "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/143335283/original/2274a39adc5a8492e073b610dbcdeb1a2f900105/draw-anime-profile-picture-for-you-bd1d.jpg",
-      firstName: "Graciela ",
-      lastName: "Guzman",
-      date: "31-10-2022",
-      medium: "facebook",
-      content: "Este es el contenido",
-    },
-  ];
+
   const [contactedClients, setContactedClients] = useState([{}]);
   useEffect(() => {
     fetch("https://calm-wildwood-29871.herokuapp.com/gettalkdetails",
@@ -56,11 +36,11 @@ function VerMasContactados() {
       </MDBox>
       <MDBox py={3}>
         <Grid item xs={3}>
-          {contactedClients.map((item, index) => {
+          {contactedClients[0]._id && contactedClients.map((item, index) => {
             return (
               <div
               >
-                <TalkDetails key={index} data={item} userData={location.state} />
+                <TalkDetails key={item._id} data={item} userData={location.state} />
                 <div style={{ height: 10 }} />
 
               </div>

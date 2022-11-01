@@ -56,7 +56,7 @@ function VerMasClientesActivos() {
       <Card>
         <MDBox pt={4} px={4}>
           <Grid container spacing={2}>
-            <Grid xs={2}>
+            <Grid item xs={2}>
               <MDAvatar
                 src={location.state.profilePicture}
                 alt="Avatar"
@@ -65,7 +65,7 @@ function VerMasClientesActivos() {
               />
             </Grid>
 
-            <Grid xs={8} spacing={1} container direction="column">
+            <Grid item xs={8} spacing={1} container direction="column">
               <MDTypography pt={3} variant="h6" fontWeight="medium">
                 {location.state.firstName + " " + location.state.lastName}
               </MDTypography>

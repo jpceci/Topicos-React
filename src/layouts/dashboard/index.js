@@ -70,7 +70,7 @@ function Dashboard() {
           </Grid>
           <Grid item xs={3}>
             <ul className="prospectClients">
-              {prospectClients.map((item) => {
+              {prospectClients[0]._id && prospectClients.map((item, index) => {
                 return (
                   <div>
                     <CardClients key={item._id} data={item} />
@@ -82,7 +82,7 @@ function Dashboard() {
           </Grid>
           <Grid item xs={3}>
             <ul className="prospectClients">
-              {contactedClients.map((item) => {
+              {contactedClients[0]._id && contactedClients.map((item, index) => {
                 return (
                   <div>
                     <CardClients key={item._id} data={item} />
@@ -94,7 +94,7 @@ function Dashboard() {
           </Grid>
           <Grid item xs={3}>
             <ul className="prospectClients">
-              {activeClients.map((item) => {
+              {activeClients[0]._id && activeClients.map((item, index) => {
                 return (
                   <div>
                     <CardClients key={item._id} data={item} />
@@ -106,7 +106,7 @@ function Dashboard() {
           </Grid>
           <Grid item xs={3}>
             <ul className="prospectClients">
-              {habitualClients.map((item) => {
+              {habitualClients[0]._id && habitualClients.map((item, index) => {
                 return (
                   <div>
                     <CardClients key={item._id} data={item} />

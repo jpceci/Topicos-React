@@ -30,7 +30,7 @@ function ContactForm({ userData }) {
     <Card style={{ height: 400, width: 700 }}>
       <MDBox pt={3} px={3}>
         <Grid item xs container direction="row">
-          <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
+          <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
             Usuario: 
           </MDTypography>
           <MDTypography variant="subtitle2" color="#text" fontWeight="regular">
@@ -38,7 +38,7 @@ function ContactForm({ userData }) {
           </MDTypography>
         </Grid>
         <Grid item xs container direction="row" sx={{ marginTop: 1 }}>
-          <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
+          <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
             Fecha:
           </MDTypography>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -53,7 +53,7 @@ function ContactForm({ userData }) {
           {/* <TextField id="outlined-basic"  variant="outlined" /> */}
         </Grid>
         <Grid item xs container direction="row" sx={{ marginTop: 1 }}>
-          <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
+          <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
             Medio:
           </MDTypography>
           <Box sx={{ minWidth: 120 }}>
@@ -79,7 +79,7 @@ function ContactForm({ userData }) {
 
       <MDBox pt={3} px={3}>
         <Grid item xs container direction="row">
-          <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
+          <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
             Contenido:
           </MDTypography>
         </Grid>
@@ -96,7 +96,7 @@ function ContactForm({ userData }) {
           variant="gradient"
           color="info"
           size="small"
-          href="http://localhost:3000/dashboard"
+          href="/dashboard"
         >
           Guardar
         </MDButton>
