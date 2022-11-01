@@ -118,7 +118,6 @@ function CardClients({ data }) {
                 color="info"
                 fullWidth
                 size="small"
-                href="http://localhost:3000/contactedDetails"
 
               >
                 Ver Mas
