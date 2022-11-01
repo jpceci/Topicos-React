@@ -6,9 +6,9 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import Contact from "./layouts/Contact";
 import VerMasContactados from "./layouts/VerMasContactados";
 import VerMasClientesActivos from "./layouts/VerMasClientesActivos";
-import BasicTable from "./layouts/VerMasClientesActivos/components/Table";
 import VerMasHabituales from "./layouts/VerMasHabituales";
 import CrearPromocion from "./layouts/CrearPromocion";
+import CrearNotificacion from "./layouts/CrearNotificacion";
 const routes = [
   {
     type: "collapse",
@@ -52,6 +52,14 @@ const routes = [
     route: "/createPromotion",
     component: <CrearPromocion/>
   },
+  {
+    type: "collapse",
+    name: "Crear notificacion",
+    key: "tables",
+    route: "/createNotification",
+    component: <CrearNotificacion/>
+  },
+  
   {
     name: "Cerrar",
     key: "cerrar",
