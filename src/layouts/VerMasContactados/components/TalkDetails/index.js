@@ -5,14 +5,14 @@ import MDTypography from "../../../../components/MDTypography";
 import MDAvatar from "../../../../components/MDAvatar";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-function TalkDetails({data}) {
+function TalkDetails({ data, userData }) {
   return (
-    <Card  style={{ height: 300, width: 700 }}>
+    <Card style={{ height: 300, width: 700 }}>
       <MDBox pt={4} px={4}>
         <Grid container spacing={2}>
           <Grid xs={2}>
             <MDAvatar
-              src={data.profilePicture}
+              src={userData.profilePicture}
               alt="Avatar"
               variant="circular"
               size="lg"
@@ -21,14 +21,18 @@ function TalkDetails({data}) {
 
           <Grid xs={8} spacing={1} container direction="column">
             <MDTypography variant="h6" fontWeight="medium">
-              {data.firstName} {data.lastName}
+              {userData.firstName + " " + userData.lastName}
             </MDTypography>
-            <MDTypography variant="caption" fontWeight="light">
-              {data.date}
-            </MDTypography>
-            <MDTypography variant="caption" fontWeight="light">
-              {data.medium}
-            </MDTypography>
+            {data.createdAt && (
+              <>
+                <MDTypography variant="caption" fontWeight="light">
+                  {(data.createdAt).slice(0, 10)}
+                </MDTypography>
+                <MDTypography variant="caption" fontWeight="light">
+                  {data.socialMedia}
+                </MDTypography>
+              </>
+            )}
           </Grid>
           <Grid
             xs={2}
