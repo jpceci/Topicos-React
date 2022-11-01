@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import CardClients from "./components/CardClients";
 import { useInterval } from "../../useInterval";
 function Dashboard() {
-  const [delay, setDelay] = useState(1000);
+  const [delay, setDelay] = useState(10000);
   const [prospectClients, setProspectClients] = useState([{}]);
   const [contactedClients, setContactedClients] = useState([{}]);
   const [activeClients, setActiveClients] = useState([{}]);
@@ -26,7 +26,8 @@ function Dashboard() {
           setHabitualClients(res[3]);
         }
       }
-    )},delay);
+    )
+  }, delay);
   useEffect(() => {
     fetch("https://calm-wildwood-29871.herokuapp.com/getusersdata").then(
       async response => {
@@ -83,7 +84,7 @@ function Dashboard() {
           </Grid>
           <Grid item xs={3}>
             <ul className="prospectClients">
-              {prospectClients[0]._id && prospectClients.map((item, index) => {
+              {prospectClients.map((item, index) => {
                 return (
                   <div>
                     <CardClients key={item._id} data={item} />
@@ -95,7 +96,7 @@ function Dashboard() {
           </Grid>
           <Grid item xs={3}>
             <ul className="prospectClients">
-              {contactedClients[0]._id && contactedClients.map((item, index) => {
+              {contactedClients.map((item, index) => {
                 return (
                   <div>
                     <CardClients key={item._id} data={item} />
@@ -107,7 +108,7 @@ function Dashboard() {
           </Grid>
           <Grid item xs={3}>
             <ul className="prospectClients">
-              {activeClients[0]._id && activeClients.map((item, index) => {
+              {activeClients.map((item, index) => {
                 return (
                   <div>
                     <CardClients key={item._id} data={item} />
@@ -119,7 +120,7 @@ function Dashboard() {
           </Grid>
           <Grid item xs={3}>
             <ul className="prospectClients">
-              {habitualClients[0]._id && habitualClients.map((item, index) => {
+              {habitualClients.map((item, index) => {
                 return (
                   <div>
                     <CardClients key={item._id} data={item} />
