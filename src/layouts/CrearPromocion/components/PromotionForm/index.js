@@ -29,7 +29,7 @@ function PromotionForm() {
             Descuento:
           </MDTypography>
           <Box sx={{ minWidth: 120 }}>
-              <TextField /> %
+              <TextField variant="outlined" size="small" /> %
           </Box>
         
         </Grid>
