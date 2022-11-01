@@ -19,7 +19,6 @@ function Dashboard() {
       async response => {
         if (response.ok) {
           const res = await response.json()
-          console.log(res);
           setProspectClients(res[0]);
           setContactedClients(res[1]);
           setActiveClients(res[2]);
@@ -74,7 +73,7 @@ function Dashboard() {
               {prospectClients.map((item) => {
                 return (
                   <div>
-                    <CardClients data={item} />
+                    <CardClients key={item._id} data={item} />
                     <div style={{ height: 10 }} />
                   </div>
                 )
@@ -86,7 +85,7 @@ function Dashboard() {
               {contactedClients.map((item) => {
                 return (
                   <div>
-                    <CardClients data={item} />
+                    <CardClients key={item._id} data={item} />
                     <div style={{ height: 10 }} />
                   </div>
                 )
@@ -98,7 +97,7 @@ function Dashboard() {
               {activeClients.map((item) => {
                 return (
                   <div>
-                    <CardClients data={item} />
+                    <CardClients key={item._id} data={item} />
                     <div style={{ height: 10 }} />
                   </div>
                 )
@@ -110,7 +109,7 @@ function Dashboard() {
               {habitualClients.map((item) => {
                 return (
                   <div>
-                    <CardClients data={item} />
+                    <CardClients key={item._id} data={item} />
                     <div style={{ height: 10 }} />
                   </div>
                 )

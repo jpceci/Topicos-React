@@ -6,29 +6,50 @@ import Grid from "@mui/material/Grid";
 import MDAvatar from "../../components/MDAvatar";
 import MDTypography from "../../components/MDTypography";
 import BasicExample from "./components/Table";
+import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from "react";
+
 function VerMasClientesActivos() {
-  let ordenes = [
-    {
-      fecha: "18-10-2022",
-      producto: "Adore You (Polera)",
-      cantidad: 2,
-    },
-    {
-      fecha: "18-10-2022",
-      producto: "Adore You (Polera)",
-      cantidad: 2,
-    },
-    {
-      fecha: "18-10-2022",
-      producto: "Adore You (Polera)",
-      cantidad: 2,
-    },
-    {
-      fecha: "18-10-2022",
-      producto: "Adore You (Polera)",
-      cantidad: 2,
-    },
-  ];
+
+  const [activeClients, setActiveClients] = useState([{}]);
+  useEffect(() => {
+    fetch("https://calm-wildwood-29871.herokuapp.com/getactiveclientdata",
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(location.state)
+      }).then(
+        async response => {
+          if (response.ok) {
+            const res = await response.json();
+            setActiveClients(res);
+          }
+        }
+      )
+  }, [])
+  // let ordenes = [
+  const location = useLocation()
+  //   {
+  //     fecha: "18-10-2022",
+  //     producto: "Adore You (Polera)",
+  //     cantidad: 2,
+  //   },
+  //   {
+  //     fecha: "18-10-2022",
+  //     producto: "Adore You (Polera)",
+  //     cantidad: 2,
+  //   },
+  //   {
+  //     fecha: "18-10-2022",
+  //     producto: "Adore You (Polera)",
+  //     cantidad: 2,
+  //   },
+  //   {
+  //     fecha: "18-10-2022",
+  //     producto: "Adore You (Polera)",
+  //     cantidad: 2,
+  //   },
+  // ];
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -37,7 +58,7 @@ function VerMasClientesActivos() {
           <Grid container spacing={2}>
             <Grid xs={2}>
               <MDAvatar
-                src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/143335283/original/2274a39adc5a8492e073b610dbcdeb1a2f900105/draw-anime-profile-picture-for-you-bd1d.jpg"
+                src={location.state.profilePicture}
                 alt="Avatar"
                 variant="circular"
                 size="lg"
@@ -46,14 +67,14 @@ function VerMasClientesActivos() {
 
             <Grid xs={8} spacing={1} container direction="column">
               <MDTypography pt={3} variant="h6" fontWeight="medium">
-                Graciela Guzman
+                {location.state.firstName + " " + location.state.lastName}
               </MDTypography>
             </Grid>
           </Grid>
         </MDBox>{" "}
         <hr />
         <MDBox pt={4} px={4}>
-          <BasicExample tuplas={ordenes}/>
+          <BasicExample tuplas={activeClients} />
         </MDBox>
       </Card>
     </DashboardLayout>

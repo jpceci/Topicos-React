@@ -19,7 +19,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 
 
-function ContactForm({ name }) {
+function ContactForm({ userData }) {
   const [medio, setMedio] = useState("");
   const [value, setValue] = React.useState(null);
 
@@ -31,10 +31,10 @@ function ContactForm({ name }) {
       <MDBox pt={3} px={3}>
         <Grid item xs container direction="row">
           <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
-            Usuario:
+            Usuario: 
           </MDTypography>
           <MDTypography variant="subtitle2" color="#text" fontWeight="regular">
-            Graciela Guzman
+            {userData.firstName + " " + userData.lastName}
           </MDTypography>
         </Grid>
         <Grid item xs container direction="row" sx={{ marginTop: 1 }}>

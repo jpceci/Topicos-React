@@ -17,7 +17,7 @@ const routes = [
   {
     type: "collapse",
     name: "Crear promocion",
-    key: "tables",
+    key: "createPromotion",
     route: "/createPromotion",
     icon: <DiscountIcon/>,
 

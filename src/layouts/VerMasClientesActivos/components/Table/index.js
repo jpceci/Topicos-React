@@ -2,11 +2,11 @@ import Table from "react-bootstrap/Table";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function BasicExample({ tuplas }) {
+  console.log(tuplas);
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Fecha</th>
           <th>Producto</th>
           <th>Cantidad</th>
         </tr>
@@ -15,9 +15,15 @@ function BasicExample({ tuplas }) {
         {tuplas.map((tupla, index) => {
           return (
             <tr>
-              <td>{tupla.fecha}</td>
-              <td>{tupla.producto}</td>
-              <td>{tupla.cantidad}</td>
+              {tupla._id && (
+                <td>{tupla._id.name + " (" + tupla._id.type + ") Talla " + tupla._id.size}</td>
+                )
+              }
+              {tupla.quantity && (
+                <td>
+                  {tupla.quantity}
+                </td>
+              )}
             </tr>
           );
         })}
