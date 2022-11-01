@@ -3,12 +3,8 @@ import Cerrar from "./layouts/authentication/sign-in";
 // @mui icons
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import Contact from "./layouts/Contact";
-import VerMasContactados from "./layouts/VerMasContactados";
-import VerMasClientesActivos from "./layouts/VerMasClientesActivos";
-import VerMasHabituales from "./layouts/VerMasHabituales";
+import DiscountIcon from '@mui/icons-material/Discount';
 import CrearPromocion from "./layouts/CrearPromocion";
-import CrearNotificacion from "./layouts/CrearNotificacion";
 const routes = [
   {
     type: "collapse",
@@ -17,47 +13,15 @@ const routes = [
     icon: <DashboardIcon />,
     route: "/dashboard",
     component: <Dashboard />,
-  }, {
-    type: "collapse",
-    name: "Contactar",
-    key: "tables",
-    route: "/contact",
-    component: <Contact />,
-  },
-  {
-    type: "collapse",
-    name: "ver mas de contactados",
-    key: "tables",
-    route: "/contactedDetails",
-    component: <VerMasContactados />,
-  },
-  {
-    type: "collapse",
-    name: "ver mas de Clientes activos",
-    key: "tables",
-    route: "/activeClientDetail",
-    component: <VerMasClientesActivos />,
-  },
-  {
-    type: "collapse",
-    name: "ver mas de Clientes Habituales",
-    key: "tables",
-    route: "/usualClientDetail",
-    component: <VerMasHabituales/>
-  },
+  }, 
   {
     type: "collapse",
     name: "Crear promocion",
     key: "tables",
     route: "/createPromotion",
+    icon: <DiscountIcon/>,
+
     component: <CrearPromocion/>
-  },
-  {
-    type: "collapse",
-    name: "Crear notificacion",
-    key: "tables",
-    route: "/createNotification",
-    component: <CrearNotificacion/>
   },
   
   {

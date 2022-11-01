@@ -14,7 +14,7 @@ function Contact(){
            <MDBox py={3}>
                 <ContactForm/>
            </MDBox>
-        </DashboardLayout>
+         </DashboardLayout>
     );
 
 } export default Contact;

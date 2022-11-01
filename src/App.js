@@ -37,6 +37,11 @@ import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "./
 // Images
 import brandWhite from "./assets/images/logo-ct.png";
 import brandDark from "./assets/images/logo-ct-dark.png";
+import Contact from "./layouts/Contact";
+import VerMasContactados from "./layouts/VerMasContactados";
+import VerMasClientesActivos from "./layouts/VerMasClientesActivos";
+import VerMasHabituales from "./layouts/VerMasHabituales";
+import CrearNotificacion from "./layouts/CrearNotificacion";
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -176,6 +181,13 @@ export default function App() {
       <Routes>
         {getRoutes(routes)}
         <Route path="*" element={<Navigate to="/dashboard" />} />
+        <Route path="contact" element={ <Contact/> }/>
+        <Route path="contactedDetails" element= {<VerMasContactados/>}/>
+        <Route path="activeClientDetail" element={<VerMasClientesActivos/>}/>
+        <Route path="usualClientDetail" element={<VerMasHabituales/>}/>
+        <Route path="createNotification" element={<CrearNotificacion/>}/>
+
+
       </Routes>
     </ThemeProvider>
   );
