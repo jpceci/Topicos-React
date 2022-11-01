@@ -4,23 +4,12 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MDTypography from "../../../../components/MDTypography";
 import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { useState } from "react";
+import MultipleSelectCheckmarks from "../MultipleSelectCheckMarks";
 import MDButton from "../../../../components/MDButton";
 import * as React from "react";
 
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-
-function PromotionForm({ name }) {
-  const [medio, setMedio] = useState("");
-  const [value, setValue] = React.useState(null);
-
-  const handleChange = (event) => {
-    setMedio(event.target.value);
-  };
+let products = ["producto1", "prod2", "prod3"];
+function PromotionForm() {
   return (
     <Card style={{ height: 500, width: 700 }}>
       <MDBox pt={3} px={3}>
@@ -31,21 +20,7 @@ function PromotionForm({ name }) {
             Producto(s):
           </MDTypography>
           <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth sx={{ margin: 2 }}>
-              <InputLabel id="outlined-basic"></InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Medio"
-                value={medio}
-                onChange={handleChange}
-                autoWidth
-              >
-                <MenuItem value={"producto1"}>Producto1</MenuItem>
-                <MenuItem value={"producto1"}>Producto1</MenuItem>
-                <MenuItem value={"producto1"}>Producto1</MenuItem>
-              </Select>
-            </FormControl>
+            <MultipleSelectCheckmarks products={products} />
           </Box>
           {/* <TextField id="outlined-basic"  variant="outlined" /> */}
         </Grid>
@@ -53,7 +28,10 @@ function PromotionForm({ name }) {
           <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
             Descuento:
           </MDTypography>
-          <TextField /> %
+          <Box sx={{ minWidth: 120 }}>
+              <TextField /> %
+          </Box>
+        
         </Grid>
       </MDBox>
 
@@ -75,7 +53,7 @@ function PromotionForm({ name }) {
           <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
             Foto (link):
           </MDTypography>
-          <TextField fullWidth/>
+          <TextField fullWidth />
         </Grid>
         <MDButton
           style={{ position: "absolute", bottom: 15, maxWidth: "80%" }}
