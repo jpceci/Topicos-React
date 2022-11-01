@@ -20,42 +20,42 @@ const routes = [
   }, {
     type: "collapse",
     name: "Contactar",
-    key: "tables",
+    key: "contact",
     route: "/contact",
     component: <Contact />,
   },
   {
     type: "collapse",
     name: "ver mas de contactados",
-    key: "tables",
+    key: "contactedDetails",
     route: "/contactedDetails",
     component: <VerMasContactados />,
   },
   {
     type: "collapse",
     name: "ver mas de Clientes activos",
-    key: "tables",
+    key: "activeClientDetail",
     route: "/activeClientDetail",
     component: <VerMasClientesActivos />,
   },
   {
     type: "collapse",
     name: "ver mas de Clientes Habituales",
-    key: "tables",
+    key: "usualClientDetail",
     route: "/usualClientDetail",
     component: <VerMasHabituales/>
   },
   {
     type: "collapse",
     name: "Crear promocion",
-    key: "tables",
+    key: "createPromotion",
     route: "/createPromotion",
     component: <CrearPromocion/>
   },
   {
     type: "collapse",
     name: "Crear notificacion",
-    key: "tables",
+    key: "createNotification",
     route: "/createNotification",
     component: <CrearNotificacion/>
   },

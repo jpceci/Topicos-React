@@ -1,4 +1,5 @@
 import Card from "@mui/material/Card";
+import { Link, useNavigate } from 'react-router-dom';
 
 // Material Dashboard 2 React components
 import MDBox from "../../../../components/MDBox";
@@ -10,7 +11,20 @@ import PhoneIcon from "@mui/icons-material/Call";
 
 
 function CardClients({ data }) {
-
+  const navigate = useNavigate();
+  
+  const toContact = () => {
+    navigate('/contact', {state:data});
+  }
+  const toContactedDetails = () => {
+    navigate('/contactedDetails', {state:data});
+  }
+  const toActiveClientDetail = () => {
+    navigate('/activeClientDetail', {state:data});
+  }
+  const toUsualClientDetail = () => {
+    navigate('/usualClientDetail', {state:data});
+  }
   return (
     <Card style={{ height: 200 }}>
       <MDBox pt={3} px={3}>
@@ -41,7 +55,7 @@ function CardClients({ data }) {
           {data.state === 1 && (
             <>
               <Grid item xs container direction="row" justifyContent="space-between">
-                <MDTypography variant="caption" color="#fff" fontWeight="regular" >
+                <MDTypography variant="caption" color="dark" fontWeight="regular" >
                   Nro. de veces que ingresó:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
@@ -49,16 +63,16 @@ function CardClients({ data }) {
                 </MDTypography>
               </Grid>
               <Grid item xs container direction="row" justifyContent="space-between">
-                <MDTypography variant="caption" color="#fff" fontWeight="regular">
+                <MDTypography variant="caption" color="dark" fontWeight="regular">
                   Último ingreso:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  {(data.lastUserVisit).slice(0,10)}
+                  {(data.lastUserVisit).slice(0, 10)}
                 </MDTypography>
               </Grid>
 
               <Grid item xs container direction="row" justifyContent="space-between">
-                <MDTypography variant="caption" color="#fff" fontWeight="regular">
+                <MDTypography variant="caption" color="dark" fontWeight="regular">
                   Link de fb:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
@@ -66,7 +80,7 @@ function CardClients({ data }) {
                 </MDTypography>
               </Grid>
               <MDButton
-                href="http://localhost:3000/contact"
+                onClick={() => { toContact() }}
                 style={{ position: "absolute", bottom: 15, maxWidth: "80%" }}
                 variant="gradient"
                 color="info"
@@ -82,15 +96,15 @@ function CardClients({ data }) {
           {data.state === 2 && (
             <>
               <Grid item xs container direction="row" justifyContent="space-between">
-                <MDTypography variant="caption" color="#fff" fontWeight="regular">
+                <MDTypography variant="caption" color="dark" fontWeight="regular">
                   Fecha Contactado:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  {(data.lastUserContact).slice(0,10)}
+                  {(data.lastUserContact).slice(0, 10)}
                 </MDTypography>
               </Grid>
               <Grid item xs container direction="row" justifyContent="space-between">
-                <MDTypography variant="caption" color="#fff" fontWeight="regular">
+                <MDTypography variant="caption" color="dark" fontWeight="regular">
                   Nro. de veces contactado:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
@@ -98,6 +112,7 @@ function CardClients({ data }) {
                 </MDTypography>
               </Grid>
               <MDButton
+                onClick={() => { toContactedDetails() }}
                 style={{ position: "absolute", bottom: 15, maxWidth: "80%" }}
                 variant="gradient"
                 color="info"
@@ -112,15 +127,15 @@ function CardClients({ data }) {
           {data.state === 3 && (
             <>
               <Grid item xs container direction="row" justifyContent="space-between">
-                <MDTypography variant="caption" color="#fff" fontWeight="regular">
+                <MDTypography variant="caption" color="dark" fontWeight="regular">
                   Fecha Último Pedido:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  {(data.lastUserOrder).slice(0,10)}
+                  {(data.lastUserOrder).slice(0, 10)}
                 </MDTypography>
               </Grid>
               <Grid item xs container direction="row" justifyContent="space-between">
-                <MDTypography variant="caption" color="#fff" fontWeight="regular">
+                <MDTypography variant="caption" color="dark" fontWeight="regular">
                   Productos Pedidos:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
@@ -128,6 +143,7 @@ function CardClients({ data }) {
                 </MDTypography>
               </Grid>
               <MDButton
+                onClick={() => { toActiveClientDetail() }}
                 style={{ position: "absolute", bottom: 15, maxWidth: "80%" }}
                 variant="gradient"
                 color="info"
@@ -142,30 +158,31 @@ function CardClients({ data }) {
           {data.state === 4 && (
             <>
               <Grid item xs container direction="row" justifyContent="space-between">
-                <MDTypography variant="caption" color="#fff" fontWeight="regular">
+                <MDTypography variant="caption" color="dark" fontWeight="regular">
                   Fecha Último Pedido:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  {(data.lastOrder).slice(0,10)}
+                  {(data.lastOrder).slice(0, 10)}
                 </MDTypography>
               </Grid>
               <Grid item xs container direction="row" justifyContent="space-between">
-                <MDTypography variant="caption" color="#fff" fontWeight="regular">
+                <MDTypography variant="caption" color="dark" fontWeight="regular">
                   Frecuencia de Pedidos:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  {(data.frequencyOrder/1000/60/60/24).toFixed(0)} días
+                  {(data.frequencyOrder / 1000 / 60 / 60 / 24).toFixed(0)} días
                 </MDTypography>
               </Grid>
               <Grid item xs container direction="row" justifyContent="space-between">
-                <MDTypography variant="caption" color="#fff" fontWeight="regular">
+                <MDTypography variant="caption" color="dark" fontWeight="regular">
                   Promedio de Compras:
                 </MDTypography>
                 <MDTypography variant="caption" color="text" fontWeight="regular">
-                  {(data.avgTotalPrice.$numberDecimal*1).toFixed(2)}bs
+                  {(data.avgTotalPrice)}bs
                 </MDTypography>
               </Grid>
               <MDButton
+                onClick={() => { toUsualClientDetail() }}
                 style={{ position: "absolute", bottom: 15, maxWidth: "80%" }}
                 variant="gradient"
                 color="info"

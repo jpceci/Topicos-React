@@ -49,6 +49,7 @@ export default function App() {
     transparentSidenav,
     whiteSidenav,
     darkMode,
+    icon
   } = controller;
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);

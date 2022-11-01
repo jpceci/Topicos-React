@@ -4,8 +4,10 @@ import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import { Grid } from "@mui/material";
 import TalkDetails from "./components/TalkDetails";
+import {useLocation} from 'react-router-dom';
 
 function VerMasContactados() {
+  const location = useLocation()
   let detallesDeCharlas = [
     {
       profilePicture:
