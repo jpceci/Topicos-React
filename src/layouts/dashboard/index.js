@@ -8,12 +8,25 @@ import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import { useEffect, useState } from "react";
 import CardClients from "./components/CardClients";
-
+import { useInterval } from "../../useInterval";
 function Dashboard() {
+  const [delay, setDelay] = useState(1000);
   const [prospectClients, setProspectClients] = useState([{}]);
   const [contactedClients, setContactedClients] = useState([{}]);
   const [activeClients, setActiveClients] = useState([{}]);
   const [habitualClients, setHabitualClients] = useState([{}]);
+  useInterval(() => {
+    fetch("https://calm-wildwood-29871.herokuapp.com/getusersdata").then(
+      async response => {
+        if (response.ok) {
+          const res = await response.json()
+          setProspectClients(res[0]);
+          setContactedClients(res[1]);
+          setActiveClients(res[2]);
+          setHabitualClients(res[3]);
+        }
+      }
+    )},delay);
   useEffect(() => {
     fetch("https://calm-wildwood-29871.herokuapp.com/getusersdata").then(
       async response => {
