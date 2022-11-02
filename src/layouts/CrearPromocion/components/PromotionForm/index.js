@@ -43,7 +43,7 @@ function PromotionForm() {
           <hr />
 
           <Grid item xs container direction="row" sx={{ marginTop: 1 }}>
-            <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
+            <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
               Producto(s):
             </MDTypography>
             <Box sx={{ minWidth: 120 }}>
@@ -54,7 +54,7 @@ function PromotionForm() {
             {/* <TextField id="outlined-basic"  variant="outlined" /> */}
           </Grid>
           <Grid item xs container direction="row">
-            <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
+            <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
               Descuento:
             </MDTypography>
             <Box sx={{ minWidth: 120 }}>
@@ -66,7 +66,7 @@ function PromotionForm() {
 
         <MDBox pt={3} px={3}>
           <Grid item xs container direction="row">
-            <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
+            <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
               Descripcion:
             </MDTypography>
           </Grid>
@@ -81,7 +81,7 @@ function PromotionForm() {
             />
           </Grid>
           <Grid item xs container direction="row">
-            <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
+            <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
               Foto (link):
             </MDTypography>
             <TextField

@@ -27,29 +27,7 @@ function VerMasClientesActivos() {
         }
       )
   }, [])
-  // let ordenes = [
   const location = useLocation()
-  //   {
-  //     fecha: "18-10-2022",
-  //     producto: "Adore You (Polera)",
-  //     cantidad: 2,
-  //   },
-  //   {
-  //     fecha: "18-10-2022",
-  //     producto: "Adore You (Polera)",
-  //     cantidad: 2,
-  //   },
-  //   {
-  //     fecha: "18-10-2022",
-  //     producto: "Adore You (Polera)",
-  //     cantidad: 2,
-  //   },
-  //   {
-  //     fecha: "18-10-2022",
-  //     producto: "Adore You (Polera)",
-  //     cantidad: 2,
-  //   },
-  // ];
   return (
     <DashboardLayout>
       <DashboardNavbar />

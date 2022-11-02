@@ -7,7 +7,9 @@ import { useState } from "react";
 import MDButton from "../../../components/MDButton";
 import * as React from "react";
 
-function NotificationForm({ name }) {
+
+function NotificationForm({ userData }) {
+
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
 
@@ -29,19 +31,21 @@ function NotificationForm({ name }) {
       <form onSubmit={handleSubmit}>
         <MDBox pt={3} px={3}>
           <hr />
-          <Grid item xs container direction="row">
-            <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
-              Usuario:
-            </MDTypography>
+          <Grid item xs container>
+            <Grid item xs={2}>
+              <MDTypography variant="h6" fontWeight="medium">
+                Usuario:
+              </MDTypography>
+            </Grid>
             <MDTypography variant="subtitle2" fontWeight="medium">
-              {name}
+              {userData.firstName + " " + userData.lastName}
             </MDTypography>
           </Grid>
         </MDBox>
 
         <MDBox pt={3} px={3}>
           <Grid item xs container direction="row">
-            <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
+            <MDTypography vvariant="h6" fontWeight="medium">
               Descripcion:
             </MDTypography>
           </Grid>
@@ -56,7 +60,7 @@ function NotificationForm({ name }) {
             />
           </Grid>
           <Grid item xs container direction="row">
-            <MDTypography variant="subtitle2" color="#fff" fontWeight="medium">
+            <MDTypography variant="h6" fontWeight="medium">
               Foto (link):
             </MDTypography>
             <TextField

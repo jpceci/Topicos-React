@@ -4,13 +4,17 @@ import Grid from "@mui/material/Grid";
 import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import Promocion from "./components/Promocion";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 
 function VerMasHabituales() {
   const location = useLocation()
-
-  const [habitualClients, setHabitualClients] = useState([{}]);
+  const navigate = useNavigate();
+  
+  const toCreateNotification = () => {
+    navigate('/createNotification', {state:location.state});
+  }
+  const [habitualClients, setHabitualClients] = useState([]);
   useEffect(() => {
     fetch("https://calm-wildwood-29871.herokuapp.com/getmessages",
       {
@@ -31,17 +35,14 @@ function VerMasHabituales() {
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox py={3}>
-        <MDButton>Crear Notificacion</MDButton>
+        <MDButton onClick={() => { toCreateNotification() }}>Crear Notificacion</MDButton>
       </MDBox>{" "}
       <MDBox py={3}>
         <Grid item xs={3}>
-          {habitualClients[0]._id && habitualClients.map((item, index) => {
+          {habitualClients[0] && habitualClients.map((item, index) => {
             return (
-              <div
-              >
-                <Promocion key={item._id} data={item} userData={location.state} />
-                <div style={{ height: 10 }} />
-
+              <div key={item._id}>
+                <Promocion data={item} userData={location.state} />
               </div>
             );
           })}

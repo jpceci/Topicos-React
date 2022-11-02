@@ -10,11 +10,10 @@ import { useEffect, useState } from "react";
 import CardClients from "./components/CardClients";
 import { useInterval } from "../../useInterval";
 function Dashboard() {
-  const [delay, setDelay] = useState(10000);
-  const [prospectClients, setProspectClients] = useState([{}]);
-  const [contactedClients, setContactedClients] = useState([{}]);
-  const [activeClients, setActiveClients] = useState([{}]);
-  const [habitualClients, setHabitualClients] = useState([{}]);
+  const [prospectClients, setProspectClients] = useState([]);
+  const [contactedClients, setContactedClients] = useState([]);
+  const [activeClients, setActiveClients] = useState([]);
+  const [habitualClients, setHabitualClients] = useState([]);
   useInterval(() => {
     fetch("https://calm-wildwood-29871.herokuapp.com/getusersdata").then(
       async response => {
@@ -27,7 +26,7 @@ function Dashboard() {
         }
       }
     )
-  }, delay);
+  }, 10000);
   useEffect(() => {
     fetch("https://calm-wildwood-29871.herokuapp.com/getusersdata").then(
       async response => {
@@ -43,7 +42,7 @@ function Dashboard() {
   }, [])
 
   return (
-    <DashboardLayout>
+    <DashboardLayout >
       <DashboardNavbar />
       <MDBox py={3}>
         <Grid container spacing={3}>
@@ -51,7 +50,7 @@ function Dashboard() {
             <MDBox mb={1}>
               <DefaultInfoCard
                 title="Prospectos de Cliente"
-                description="Solicitudes: 3"
+                description={"Solicitudes: " + prospectClients.length}
               />
             </MDBox>
           </Grid>
@@ -83,52 +82,40 @@ function Dashboard() {
             </MDBox>
           </Grid>
           <Grid item xs={3}>
-            <ul className="prospectClients">
-              {prospectClients.map((item, index) => {
-                return (
-                  <div>
-                    <CardClients key={item._id} data={item} />
-                    <div style={{ height: 10 }} />
-                  </div>
-                )
-              })}
-            </ul>
+            {prospectClients[0] && prospectClients.map((item, index) => {
+              return (
+                <div key={item._id}>
+                  <CardClients data={item} />
+                </div>
+              )
+            })}
           </Grid>
           <Grid item xs={3}>
-            <ul className="prospectClients">
-              {contactedClients.map((item, index) => {
-                return (
-                  <div>
-                    <CardClients key={item._id} data={item} />
-                    <div style={{ height: 10 }} />
-                  </div>
-                )
-              })}
-            </ul>
+            {contactedClients[0] && contactedClients.map((item, index) => {
+              return (
+                <div key={item._id}>
+                  <CardClients data={item} />
+                </div>
+              )
+            })}
           </Grid>
           <Grid item xs={3}>
-            <ul className="prospectClients">
-              {activeClients.map((item, index) => {
-                return (
-                  <div>
-                    <CardClients key={item._id} data={item} />
-                    <div style={{ height: 10 }} />
-                  </div>
-                )
-              })}
-            </ul>
+            {activeClients[0] && activeClients.map((item, index) => {
+              return (
+                <div key={item._id}>
+                  <CardClients data={item} />
+                </div>
+              )
+            })}
           </Grid>
           <Grid item xs={3}>
-            <ul className="prospectClients">
-              {habitualClients.map((item, index) => {
-                return (
-                  <div>
-                    <CardClients key={item._id} data={item} />
-                    <div style={{ height: 10 }} />
-                  </div>
-                )
-              })}
-            </ul>
+            {habitualClients[0] && habitualClients.map((item, index) => {
+              return (
+                <div key={item._id}>
+                  <CardClients data={item} />
+                </div>
+              )
+            })}
           </Grid>
         </Grid>
       </MDBox>

@@ -2,13 +2,17 @@ import MDBox from "../../components/MDBox";
 import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import NotificationForm from "./NotificationForm";
+import { useLocation } from 'react-router-dom';
 
-function CrearNotificacion(){
-    return(
+
+function CrearNotificacion() {
+    const location = useLocation()
+
+    return (
         <DashboardLayout>
-            <DashboardNavbar/>
+            <DashboardNavbar />
             <MDBox py={3}>
-                <NotificationForm name={"Renato Alvarez"}/>
+                <NotificationForm userData={location.state}/>
             </MDBox>
         </DashboardLayout>
     );

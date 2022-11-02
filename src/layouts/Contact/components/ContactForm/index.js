@@ -14,7 +14,7 @@ import MDButton from "../../../../components/MDButton";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import * as React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 
@@ -22,7 +22,7 @@ function ContactForm({ userData }) {
   const [medio, setMedio] = useState("");
   const [value, setValue] = React.useState(null);
   const [content, setContent] = React.useState("");
-
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setMedio(event.target.value);
   };
@@ -33,10 +33,26 @@ function ContactForm({ userData }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(medio);
-    console.log(value);
-    console.log(content);
+    let dataToSend = {
+      socialMedia: medio,
+      dateContacted: value,
+      content: content
+    }
+
+    fetch("https://calm-wildwood-29871.herokuapp.com/savetalkdetail",
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify([userData, dataToSend])
+      }).then(
+        async response => {
+          if (response.ok) {
+            navigate('/dashboard');
+          }
+        }
+      )
   };
+
 
   return (
     <Card style={{ height: 400, width: 700 }}>
@@ -46,7 +62,7 @@ function ContactForm({ userData }) {
             <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
               Usuario:
             </MDTypography>
-            <MDTypography variant="subtitle2" color="#text" fontWeight="regular">
+            <MDTypography variant="subtitle2" color="text" fontWeight="regular">
               {userData.firstName + " " + userData.lastName}
             </MDTypography>
           </Grid>

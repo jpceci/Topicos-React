@@ -6,11 +6,16 @@ import { Grid } from "@mui/material";
 import TalkDetails from "./components/TalkDetails";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function VerMasContactados() {
   const location = useLocation()
+  const navigate = useNavigate();
 
-  const [contactedClients, setContactedClients] = useState([{}]);
+  const toContact = () => {
+    navigate('/contact', { state: location.state });
+  }
+  const [contactedClients, setContactedClients] = useState([]);
   useEffect(() => {
     fetch("https://calm-wildwood-29871.herokuapp.com/gettalkdetails",
       {
@@ -26,23 +31,21 @@ function VerMasContactados() {
         }
       )
   }, [])
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox py={3}>
-        <MDButton href="http://localhost:3000/contact">
+        <MDButton onClick={() => { toContact() }}>
           Crear informacion de contacto
         </MDButton>
       </MDBox>
       <MDBox py={3}>
         <Grid item xs={3}>
-          {contactedClients[0]._id && contactedClients.map((item, index) => {
+          {contactedClients[0] && contactedClients.map((item, index) => {
             return (
-              <div
-              >
-                <TalkDetails key={item._id} data={item} userData={location.state} />
-                <div style={{ height: 10 }} />
-
+              <div key={item._id}>
+                <TalkDetails data={item} userData={location.state} />
               </div>
             );
           })}
