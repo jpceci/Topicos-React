@@ -4,12 +4,28 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MDTypography from "../../../../components/MDTypography";
 import TextField from "@mui/material/TextField";
-import MultipleSelectCheckmarks from "../MultipleSelectCheckMarks";
 import MDButton from "../../../../components/MDButton";
 import { useState } from "react";
 import * as React from "react";
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
 
 let products = ["producto1", "prod2", "prod3"];
+//para el select
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 function PromotionForm() {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
@@ -28,14 +44,25 @@ function PromotionForm() {
     setDiscount(event.target.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     console.log(discount);
     console.log(value);
     console.log(description);
     console.log(link);
   };
+  //para el select
+  const [productsSelected, setProductsSelected] = useState([]);
 
+  const handleSelectChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setProductsSelected(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
   return (
     <Card style={{ height: 500, width: 700 }}>
       <form onSubmit={handleSubmit}>
@@ -47,9 +74,28 @@ function PromotionForm() {
               Producto(s):
             </MDTypography>
             <Box sx={{ minWidth: 120 }}>
-              <MultipleSelectCheckmarks
-                products={products}
-              />
+              <div>
+                <FormControl sx={{ m: 1, width: 300 }}>
+                  <Select
+                    labelId="demo-multiple-checkbox-label"
+                    id="demo-multiple-checkbox"
+                    multiple
+                    value={productsSelected}
+                    onChange={handleSelectChange}
+                    renderValue={(selected) => selected.join(", ")}
+                    MenuProps={MenuProps}
+                  >
+                    {products.map((product) => (
+                      <MenuItem key={product} value={product}>
+                        <Checkbox
+                          checked={productsSelected.indexOf(product) > -1}
+                        />
+                        <ListItemText primary={product} />
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </div>
             </Box>
             {/* <TextField id="outlined-basic"  variant="outlined" /> */}
           </Grid>
@@ -58,9 +104,14 @@ function PromotionForm() {
               Descuento:
             </MDTypography>
             <Box sx={{ minWidth: 120 }}>
-              <TextField variant="outlined" size="small" type="text" onChange={discChange} /> %
+              <TextField
+                variant="outlined"
+                size="small"
+                type="text"
+                onChange={discChange}
+              />{" "}
+              %
             </Box>
-
           </Grid>
         </MDBox>
 
@@ -84,10 +135,7 @@ function PromotionForm() {
             <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
               Foto (link):
             </MDTypography>
-            <TextField
-              type="text"
-              onChange={linkChange}
-              fullWidth />
+            <TextField type="text" onChange={linkChange} fullWidth />
           </Grid>
           <MDButton
             style={{ position: "absolute", bottom: 15, maxWidth: "80%" }}
@@ -95,7 +143,7 @@ function PromotionForm() {
             color="info"
             size="small"
             type="submit"
-          // href="http://localhost:3000/dashboard"
+            // href="http://localhost:3000/dashboard"
           >
             Guardar
           </MDButton>
