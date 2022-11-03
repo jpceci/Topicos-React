@@ -30,7 +30,7 @@ function PromotionForm() {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [discount, setDiscount] = React.useState("");
-  const [value, setProduct] = React.useState("");
+  const [productsSelected, setProductsSelected] = useState([]);
 
   const handleChange = (event) => {
     setDescription(event.target.value);
@@ -47,12 +47,12 @@ function PromotionForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(discount);
-    console.log(value);
     console.log(description);
     console.log(link);
+    console.log(productsSelected);
   };
   //para el select
-  const [productsSelected, setProductsSelected] = useState([]);
+  
 
   const handleSelectChange = (event) => {
     const {

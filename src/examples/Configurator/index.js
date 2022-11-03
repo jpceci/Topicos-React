@@ -12,6 +12,7 @@ import MDButton from "../../components/MDButton";
 
 // Custom styles for the Configurator
 import ConfiguratorRoot from "./ConfiguratorRoot";
+import CloseIcon from '@mui/icons-material/Close';
 
 // Material Dashboard 2 React context
 import {
@@ -129,7 +130,7 @@ function Configurator() {
           })}
           onClick={handleCloseConfigurator}
         >
-          close
+          <CloseIcon />
         </Icon>
       </MDBox>
 
