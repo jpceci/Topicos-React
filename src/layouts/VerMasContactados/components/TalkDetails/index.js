@@ -24,10 +24,10 @@ function TalkDetails({ data, userData }) {
               <MDTypography variant="h6" fontWeight="medium">
                 {userData.firstName + " " + userData.lastName}
               </MDTypography>
-              {data.createdAt && (
+              {data.dateContacted && (
                 <>
                   <MDTypography variant="caption" fontWeight="light">
-                    {(data.createdAt).slice(0, 10)}
+                    {(data.dateContacted).slice(0, 10)}
                   </MDTypography>
                   <MDTypography variant="caption" fontWeight="light">
                     {data.socialMedia}

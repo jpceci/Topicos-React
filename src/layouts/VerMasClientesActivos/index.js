@@ -27,6 +27,7 @@ function VerMasClientesActivos() {
         }
       )
   }, [])
+  console.log(activeClients);
   const location = useLocation()
   return (
     <DashboardLayout>

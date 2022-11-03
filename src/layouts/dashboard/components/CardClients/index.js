@@ -137,7 +137,7 @@ function CardClients({ data }) {
                 </Grid>
                 <Grid item xs container direction="row" justifyContent="space-between">
                   <MDTypography variant="caption" color="dark" fontWeight="regular">
-                    Productos Pedidos:
+                    Pedidos Realizadas:
                   </MDTypography>
                   <MDTypography variant="caption" color="text" fontWeight="regular">
                     {data.timesOrdered}

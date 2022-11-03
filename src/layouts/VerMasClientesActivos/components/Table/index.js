@@ -20,20 +20,24 @@ function BasicExample({ tuplas }) {
         </tr>
       </thead>
       <tbody>
-        {tuplas[0]._id && tuplas.map((tupla, index) => {
+        {tuplas[0] && tuplas.map((tupla, index) => {
           return (
-            <tr key={[tupla._id.productId, tupla._id.size]}>
-              <td>
-                <MDTypography variant="h5" color="dark" fontWeight="regular">
-                  {tupla._id.name + " (" + tupla._id.type + ") Talla " + tupla._id.size}
-                </MDTypography>
-              </td>
-              <td>
-                <MDTypography variant="h5" color="dark" fontWeight="regular">
-                  {tupla.quantity}
-                </MDTypography>
-              </td>
-            </tr>
+            <>
+              {tupla._id && (
+                <tr key={[tupla._id.productId, tupla._id.size]}>
+                  <td>
+                    <MDTypography variant="h5" color="dark" fontWeight="regular">
+                      {tupla._id.name + " (" + tupla._id.type + ") Talla " + tupla._id.size}
+                    </MDTypography>
+                  </td>
+                  <td>
+                    <MDTypography variant="h5" color="dark" fontWeight="regular">
+                      {tupla.quantity}
+                    </MDTypography>
+                  </td>
+                </tr>
+              )}
+            </>
           );
         })}
       </tbody>
