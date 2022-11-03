@@ -67,7 +67,7 @@ function CardClients({ data }) {
                     Último ingreso:
                   </MDTypography>
                   <MDTypography variant="caption" color="text" fontWeight="regular">
-                    {(data.lastUserVisit).slice(0, 10)}
+                    {data.lastUserVisit && (data.lastUserVisit).slice(0, 10)}
                   </MDTypography>
                 </Grid>
 
@@ -100,7 +100,7 @@ function CardClients({ data }) {
                     Fecha Contactado:
                   </MDTypography>
                   <MDTypography variant="caption" color="text" fontWeight="regular">
-                    {(data.lastUserContact).slice(0, 10)}
+                    {data.lastUserContact && (data.lastUserContact).slice(0, 10)}
                   </MDTypography>
                 </Grid>
                 <Grid item xs container direction="row" justifyContent="space-between">
@@ -132,7 +132,7 @@ function CardClients({ data }) {
                     Fecha Último Pedido:
                   </MDTypography>
                   <MDTypography variant="caption" color="text" fontWeight="regular">
-                    {(data.lastUserOrder).slice(0, 10)}
+                    {data.lastUserOrder && (data.lastUserOrder).slice(0, 10)}
                   </MDTypography>
                 </Grid>
                 <Grid item xs container direction="row" justifyContent="space-between">
@@ -163,7 +163,7 @@ function CardClients({ data }) {
                     Fecha Último Pedido:
                   </MDTypography>
                   <MDTypography variant="caption" color="text" fontWeight="regular">
-                    {(data.lastOrder).slice(0, 10)}
+                    {data.lastOrder && (data.lastOrder).slice(0, 10)}
                   </MDTypography>
                 </Grid>
                 <Grid item xs container direction="row" justifyContent="space-between">

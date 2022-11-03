@@ -26,7 +26,6 @@ function ContactForm({ userData }) {
   const handleChange = (event) => {
     setMedio(event.target.value);
   };
-
   const contChange = (event) => {
     setContent(event.target.value);
   };
@@ -36,7 +35,8 @@ function ContactForm({ userData }) {
     let dataToSend = {
       socialMedia: medio,
       dateContacted: value,
-      content: content
+      content: content,
+      username: localStorage.username
     }
 
     fetch("https://calm-wildwood-29871.herokuapp.com/savetalkdetail",

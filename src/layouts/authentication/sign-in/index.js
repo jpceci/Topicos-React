@@ -30,7 +30,6 @@ function Basic() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    localStorage.username = username;
     let dataToSend = {
       username: username,
       password: password,
@@ -40,13 +39,12 @@ function Basic() {
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'same-origin',
         body: JSON.stringify(dataToSend)
       }).then(
         async response => {
           const res = await response.json();
-          console.log(res);
           if (res == "ok") {
+            localStorage.username = username;
             navigate('/dashboard');
           }
         }

@@ -6,10 +6,10 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import MDButton from "../../../components/MDButton";
 import * as React from "react";
-
+import { useNavigate } from 'react-router-dom';
 
 function NotificationForm({ userData }) {
-
+  const navigate = useNavigate();
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
 
@@ -23,8 +23,22 @@ function NotificationForm({ userData }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(description);
-    console.log(link);
+    let dataToSend={
+      text:description,
+      picture:link
+    }
+    fetch("https://calm-wildwood-29871.herokuapp.com/savemessage",
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify([userData, dataToSend])
+      }).then(
+        async response => {
+          if (response.ok) {
+            navigate('/dashboard');
+          }
+        }
+      )
   };
   return (
     <Card style={{ height: 400, width: 700 }}>

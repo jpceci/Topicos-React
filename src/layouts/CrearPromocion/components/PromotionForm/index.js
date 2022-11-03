@@ -12,8 +12,8 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import { useNavigate } from 'react-router-dom';
 
-let products = ["producto1", "prod2", "prod3"];
 //para el select
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -26,7 +26,8 @@ const MenuProps = {
   },
 };
 
-function PromotionForm() {
+function PromotionForm({ products }) {
+  const navigate = useNavigate();
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [discount, setDiscount] = React.useState("");
@@ -46,13 +47,28 @@ function PromotionForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(discount);
-    console.log(description);
-    console.log(link);
-    console.log(productsSelected);
+    let dataToSend = {
+      products: productsSelected,
+      description: description,
+      picture: link,
+      discount: discount
+    }
+    fetch("https://calm-wildwood-29871.herokuapp.com/savepromotion",
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSend)
+      }).then(
+        async response => {
+          const res = await response.json();
+          if (res == "ok") {
+            navigate('/dashboard');
+          }
+        }
+      )
   };
   //para el select
-  
+
 
   const handleSelectChange = (event) => {
     const {
@@ -63,39 +79,44 @@ function PromotionForm() {
       typeof value === "string" ? value.split(",") : value
     );
   };
+
+  const render = (event) => {
+    let products = "";
+    event.map(product => products += product.productName + " " + product.productType + ", ");
+    return products;
+  }
   return (
     <Card style={{ height: 500, width: 700 }}>
       <form onSubmit={handleSubmit}>
         <MDBox pt={3} px={3}>
           <hr />
 
-          <Grid item xs container direction="row" sx={{ marginTop: 1 }}>
+          <Grid item xs container direction="row">
             <MDTypography variant="subtitle2" color="dark" fontWeight="medium">
               Producto(s):
             </MDTypography>
-            <Box sx={{ minWidth: 120 }}>
-              <div>
-                <FormControl sx={{ m: 1, width: 300 }}>
-                  <Select
-                    labelId="demo-multiple-checkbox-label"
-                    id="demo-multiple-checkbox"
-                    multiple
-                    value={productsSelected}
-                    onChange={handleSelectChange}
-                    renderValue={(selected) => selected.join(", ")}
-                    MenuProps={MenuProps}
-                  >
-                    {products.map((product) => (
-                      <MenuItem key={product} value={product}>
-                        <Checkbox
-                          checked={productsSelected.indexOf(product) > -1}
-                        />
-                        <ListItemText primary={product} />
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </div>
+            <Box sx={{ minWidth: 200 }}>
+              <FormControl sx={{ m: 2, width: 400 }}>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  value={productsSelected}
+                  onChange={handleSelectChange}
+                  renderValue={(selected) => render(selected)}
+                  MenuProps={MenuProps}
+                >
+                  {products && products.map((product) => (
+                    <MenuItem key={product._id} value={{ productName: product.name, productType: product.type }} >
+                      <Checkbox
+                        checked={productsSelected.findIndex(productSelected =>
+                          productSelected.productName == product.name && productSelected.productType == product.type) > -1}
+                      />
+                      <ListItemText primary={product.name + " " + product.type} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </Box>
             {/* <TextField id="outlined-basic"  variant="outlined" /> */}
           </Grid>
@@ -107,7 +128,7 @@ function PromotionForm() {
               <TextField
                 variant="outlined"
                 size="small"
-                type="text"
+                type="number"
                 onChange={discChange}
               />{" "}
               %
@@ -143,13 +164,12 @@ function PromotionForm() {
             color="info"
             size="small"
             type="submit"
-            // href="http://localhost:3000/dashboard"
           >
             Guardar
           </MDButton>
         </MDBox>
       </form>
-    </Card>
+    </Card >
   );
 }
 export default PromotionForm;
