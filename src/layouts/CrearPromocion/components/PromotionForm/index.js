@@ -60,7 +60,7 @@ function PromotionForm({ products }) {
         body: JSON.stringify(dataToSend)
       }).then(
         async response => {
-          const res = await response.json();
+          const res = await response.json();                                                                                                                                                               
           if (res == "ok") {
             navigate('/dashboard');
           }

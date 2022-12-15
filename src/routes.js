@@ -5,6 +5,7 @@ import Cerrar from "./layouts/authentication/sign-in";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import DiscountIcon from '@mui/icons-material/Discount';
 import CrearPromocion from "./layouts/CrearPromocion";
+import Productos from "./layouts/Productos";
 const routes = [
   {
     type: "collapse",
@@ -23,7 +24,15 @@ const routes = [
 
     component: <CrearPromocion/>
   },
-  
+  {
+    type: "collapse",
+    name: "Productos",
+    key: "products",
+    route: "/products",
+    icon: <DiscountIcon/>,
+
+    component: <Productos/>
+  },
   {
     name: "Cerrar",
     key: "cerrar",
